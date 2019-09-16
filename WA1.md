@@ -1,4 +1,4 @@
-grep -v ">" WA1.fasta | sort | tail
+*1.) grep -v ">" WA1.fasta | sort
 
 input (WA1.fasta):
 >myoglobin_kangaroo P02194 Macropus rufus (red kangaroo)
@@ -34,10 +34,10 @@ This command outputs only the lines without the ">" character (i.e. only the seq
 sort
 This filter takes the amino acid sequences and outputs them in alphabetical order.
 
-tail
-This filter prints the last ten alphabetized sequences to the command line.
-
 Final Output:
+MGLSDGEWHLVLNVWGKVETDLAGHGQEVLIRLFKSHPETLEKFDKFKHLKSEDDMRRSEDLRKHGNTVLTALGGILKKKGHHEAELKPLAQSHATKHKIPIKYLEFISEAIIHVLHSKHPAEFGADAQAAMKKALELFRNDIAAKYKELGFHG
+MGLSDGEWQLVLNIWGKVETDEGGHGKDVLIRLFKGHPETLEKFDKFKHLKSEDEMKASEDLKKHGITVLTALGNILKKKGHHEAELKPLAQSHATKHKIPVQFLEFISDAIIQVIQSKHAGNFGADAQAAMKKALELFRHDMAAKYKEFGFQG
+MGLSEGEWQLVLNVWGKVEADLAGHGQDVLIRLFKGHPETLEKFDKFKHLKTEAEMKASEDLKKHGNTVLTALGGILKKKGHHDAELKPLAQSHATKHKIPIKYLEFISEAIIHVLHSRHPAEFGADAQGAMNKALELFRKDIATKYKELGFHG
 MKFLILALCFAAASALSADQISTVQASFDKVKGDPVGILYAVFKADPSIMAKFTQFAGKDLESIKGTAPFEIHANRIVGFFSKIIGELPNIEADVNTFVASHKPRGVTHDQLNNFRAGFVSYMKAHTDFAGAEAAWGATLDTFFGMIFSKM
 MPIVDTGSVAPLSAAEKTKIRSAWAPVYSTYETSGVDILVKFFTSTPAAQEFFPKFKGLTTADQLKKSADVRWHAERIINAVNDAVASMDDTEKMSMKLRDLSGKHAKSFQVDPQYFKVLAAVIADTVAAGDAGFEKLMSMICILLRSAY
 MVHLSSEEKSAVTALWGKVNVEEVGGEALGRLLVVYPWTQRFFESFGDLSSANAVMNNPKVKAHGKKVLAAFSEGLSHLDNLKGTFAKLSELHCDKLHVDPENFRLLGNVLVIVLSHHFGKEFTPQVQAAYQKVVAGVANALAHKYH
@@ -48,3 +48,38 @@ VAFTEKQDALVSSSFEAFKANIPQYSVVFYTSILEKAPAAKDLFSFLANPTDGVNPKLTGHAEKLFALVRDSAGQLKASG
 VHLTAEEKNAITSLWGKVAIEQTGGEALGRLLIVYPWTSRFFDHFGDLSNAKAVMANPKVLAHGAKVLVAFGDAIKNLDNLKGTFAKLSELHCDKLHVDPENFKLLGNIIVICLAEHFGKEFTIDTQVAWQKLVAGVANALAHKYH
 VLSAADKGHVKAIWGKVGGHAGEYAAEGLERTFHSFPTTKTYFPHFDLSHGSAQIQAHGKKIADALGQAVEHIDDLPGTLSKLSDLHAHKLRVDPVNFKLLSHCLLVTFAAHLGDAFTPEVHASLDKFLAAVSTVLTSKYR
 VLSPADKTNIKSTWDKIGGHAGDYGGEALDRTFQSFPTTKTYFPHFDLSPGSAQVKAHGKKVADALTTAVAHLDDLPGALSALSDLHAYKLRVDPVNFKLLSHCLLVTLACHHPTEFTPAVHASLDKFFAAVSTVLTSKYR
+
+*2.) grep ">" WA1.fasta | wc -l
+
+Input: WA1.fasta (shown above)
+
+grep ">" WA1.fasta outputs all of the lines with the ">" character (i.e. the sequence names).
+
+wc -l takes the sequence names and counts the number of lines; therefore, giving the number of sequences in the file.
+
+Output: 13
+
+*3.) grep ">" WA1.fasta | sed 's/>//' | sort
+
+Input: WA1.fasta (shown above)
+
+grep ">" WA1.fasta outputs all of the lines with the ">" character (i.e. the sequence names).
+
+sed 's/>//' removes all ">" characters from the sequence names
+
+sort prints all of the sequence names/labels in alphabetical order.
+
+Output: 
+alpha_globin_dog P60529 Canis lupus familiaris (dog)
+alpha_globin_horse P01958 Equus caballus
+alpha_globin_kangaroo P01975 Macropus giganteus (eastern gray kangaroo)
+beta_globin_dog XP_537902 Canis lupus familiaris (dog)
+beta_globin_kangaroo P02106 Macropus giganteus (eastern gray kangaroo)
+beta_globin_rabbit NP_001075729 Oryctolagus cuniculus (rabbit)
+globin_insect P02229 Chironomus thummi thummi (midge)
+globin_lamprey 690951A Lampetra fluviatilis (European river lamprey)
+globin_sealamprey P02208 Petromyzon marinus (sea lamprey)
+globin_soybean 711674A Glycine max (soybean)
+myoglobin_gray_seal P68081 Halichoerus grypus
+myoglobin_harbor_porpoise P68278 Phocoena phocoena 
+myoglobin_kangaroo P02194 Macropus rufus (red kangaroo)
