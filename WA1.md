@@ -1,4 +1,4 @@
-*1.) grep -v ">" WA1.fasta | sort
+# 1.) grep -v ">" WA1.fasta | sort
 
 input (WA1.fasta):
 >myoglobin_kangaroo P02194 Macropus rufus (red kangaroo)
@@ -49,7 +49,7 @@ VHLTAEEKNAITSLWGKVAIEQTGGEALGRLLIVYPWTSRFFDHFGDLSNAKAVMANPKVLAHGAKVLVAFGDAIKNLDN
 VLSAADKGHVKAIWGKVGGHAGEYAAEGLERTFHSFPTTKTYFPHFDLSHGSAQIQAHGKKIADALGQAVEHIDDLPGTLSKLSDLHAHKLRVDPVNFKLLSHCLLVTFAAHLGDAFTPEVHASLDKFLAAVSTVLTSKYR
 VLSPADKTNIKSTWDKIGGHAGDYGGEALDRTFQSFPTTKTYFPHFDLSPGSAQVKAHGKKVADALTTAVAHLDDLPGALSALSDLHAYKLRVDPVNFKLLSHCLLVTLACHHPTEFTPAVHASLDKFFAAVSTVLTSKYR
 
-*2.) grep ">" WA1.fasta | wc -l
+# 2.) grep ">" WA1.fasta | wc -l
 
 Input: WA1.fasta (shown above)
 
@@ -59,7 +59,7 @@ wc -l takes the sequence names and counts the number of lines; therefore, giving
 
 Output: 13
 
-*3.) grep ">" WA1.fasta | sed 's/>//' | sort
+# 3.) grep ">" WA1.fasta | sed 's/>//' | sort
 
 Input: WA1.fasta (shown above)
 
