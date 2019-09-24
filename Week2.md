@@ -1,5 +1,6 @@
 # Downloading the Genbank File and Converting to .fasta
 efetch -db=nucleotide -id=NC_008535.1 -format=gb>Week2.gbk
+
 python ~/in_class_assignments/handling_seq_data/genbank_to_fasta.py Week2.gbk Week2.fasta
 > These commands pull the coffee chloroplast genetic information from GenBank, 
 > then convert this data to a .fasta file of all the protein transcripts.
