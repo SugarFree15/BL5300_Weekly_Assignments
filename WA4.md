@@ -5,6 +5,7 @@ efetch -db=nucleotide -id=CP000141.1 -format=fasta > C.hydrogenoformans_Z2901.fa
 > With this I downloaded the reference sequence of C. hydrogenoformans from NCBI and placed it into a .fasta file.
 
 gdown.pl https://drive.google.com/file/d/1PWWO5wVRRThLBXXEZjyWZHIb9udVcnCS/edit C.ferrireducens_R1.fastq
+
 gdown.pl https://drive.google.com/file/d/1mZFvpSIctuBihkOlQX9vhrkxng3cRmvK/edit C.ferrireducens_R2.fastq
 
 > These commands download read 1 and 2 for C. ferrireducens from our Google Drive and place them into respective .fastq files.
@@ -12,6 +13,7 @@ gdown.pl https://drive.google.com/file/d/1mZFvpSIctuBihkOlQX9vhrkxng3cRmvK/edit 
 # Quatily Assessment and Trimming of Raw Reads
 
 fastqc C.ferrireducens_R1.fastq
+
 fastqc C.ferrireducens_R2.fastq
 
 > With these, fastqc was used to run an analysis on the quality of the reads, outputing to a new .html file.
