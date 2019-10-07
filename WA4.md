@@ -33,3 +33,41 @@ bowtie2 -x C.hydro -1 C_ferr_R1.cutadapt.fastq  -2 C_ferr_R2.cutadapt.fastq -S C
 
 > Now, I mapped and trimmed the reads of C. ferrireducens against the reference genome of C. hydrogenoformans and exported to a .sam file.
 > After running this command, the printed output informed me that there was a 76.54% overall alignment rate between the raw reads and our reference genome, leaving 23.46% unpaired.
+
+# Formatting the .sam for Variant Indexing
+
+samtools view -b C_ferr.sam | samtools sort - > C_ferr.bam
+
+samtools index C_ferr.bam
+
+> These commands convert the .sam file into a sorted .bam file of the alignments.
+
+samtools faidx C.hydrogenoformans_Z2901.fasta
+
+> This indexed the reference genome in prep for the variant calling.
+
+# Variant Calling
+
+bcftools mpileup -f C.hydrogenoformans_Z2901.fasta C_ferr.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
+
+bcftools filter --exclud 'QUAL < 30' raw.calls.bcf > raw.calls.vcf
+
+> These commands go through our alignments between species, extracting variants between the two.
+
+bcftools view -v snps raw.calls.vcf > snp.vcf
+
+grep -c  "PASS" snp.vcf
+
+> With these, I filtered out the variants resulting from SNPs and counting them (NOTE: this returns the number of SNPs + 1 for an instance of "PASS" in the information at the top of the file).
+
+# Making Consensus Genome File
+
+bgzip raw.calls.vcf
+
+bcftools index raw.calls.vcf.gz
+
+> These zip and index the sorted variants in prep for consensus construction.
+
+cat C.hydrogenoformans_Z2901.fasta | bcftools consensus raw.calls.vcf.gz > C.ferrireducens_DSMZ.fasta
+
+> This creates a .fasta with a consensus genome assembly.
